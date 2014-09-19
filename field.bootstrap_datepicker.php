@@ -50,7 +50,6 @@ class Field_bootstrap_datepicker {
         } else {
             $date = new DateTime();
         }
-        //var_dump($value);die;
         return $this->CI->type->load_view('bootstrap_datepicker', 'input', array(
                     'value' => $date->format($this->defaultFormat),
                     'nameform' => $params['form_slug'],
@@ -68,7 +67,7 @@ class Field_bootstrap_datepicker {
      * @return type
      */
     public function pre_save($input, $field, $stream, $row_id, $form_data) {
-        $date = new DateTime($input);
+        $date = new DateTime(strtotime($input));
         return $date->format('Y-m-d');
     }
 
@@ -80,7 +79,7 @@ class Field_bootstrap_datepicker {
      */
     public function pre_output($input, $data) {
         $date = new DateTime($input);
-        return $date->format(($data['format']) ? $data['format'] : $this->defaultFormat);
+        return $date->format($this->defaultFormat);
     }
 
     // ----------------------------------------------------------------------
