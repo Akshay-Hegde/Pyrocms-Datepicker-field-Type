@@ -67,8 +67,8 @@ class Field_bootstrap_datepicker {
      * @return type
      */
     public function pre_save($input, $field, $stream, $row_id, $form_data) {
-        $date = new DateTime(strtotime($input));
-        return $date->format('Y-m-d');
+        $date = date('Y-m-d',strtotime($input));
+        return $date;
     }
 
     /**
