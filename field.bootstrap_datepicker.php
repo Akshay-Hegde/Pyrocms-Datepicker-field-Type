@@ -46,7 +46,7 @@ class Field_bootstrap_datepicker {
     public function form_output($params) {
         $value = $params['value'];
         if (!empty($value)) {
-            $date = new DateTime(strtotime($value));
+            $date = new DateTime($value);
         } else {
             $date = new DateTime();
         }
